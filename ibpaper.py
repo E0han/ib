@@ -55,7 +55,7 @@ class spider(object):
 
 		self.folder_name=self.paper_data
 		if(os.path.exists(self.subject+'/'+self.folder_name)): #check whether the folder exist
-			print("[x] The file %s is already existed"%self.folder_name)
+			print("[x] The folder %s is already existed"%self.folder_name)
 		else:
 			path=self.subject+'/'+self.folder_name
 			os.mkdir(path)
@@ -78,6 +78,7 @@ class spider(object):
 				for b in a.select('a[href]'):#the 1st url path is in tag <a href="xxx.com">
 					self.path_url=b.get("href")#return a str which is the url of the path
 					self.get_file_page()
+		print("[*] Congratulate! Everything is ready for you!")
 	def get_file_page(self):
 		#this function is used to get the link of the file which contained in the file page and download the pdf file
 		global down_url
@@ -90,8 +91,8 @@ class spider(object):
 			self.file_name=i.a.contents[0]
 			if self.file_name==" File name ":
 				continue
-			elif(os.path.exists(self.subject+'/'+self.folder_name+'/'+self.file_name)):
-				print("File:"+file_name+" is already exist")
+			elif(os.path.exists(self.subject+'/'+self.folder_name+'/'+self.file_name+'.pdf')):
+				print("File:"+self.file_name+" is already exist")
 				continue
 			else:
 				for j in i.select('a[href]'):
