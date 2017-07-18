@@ -91,7 +91,8 @@ class spider(object):
 			if self.file_name==" File name ":
 				continue
 			elif(os.path.exists(self.subject+'/'+self.folder_name+'/'+self.file_name)):
-    				print("File:"+file_name+" is already exist")
+				print("File:"+file_name+" is already exist")
+				continue
 			else:
 				for j in i.select('a[href]'):
 					down_url=j.get("href")#return a str which is the url of the file #if you're going to use proxy, just add an arg** "proxies=proxy_dic"
